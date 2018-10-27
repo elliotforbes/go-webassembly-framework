@@ -1,9 +1,20 @@
 Oak - The Go WebAssembly Framework
 ===================================
 
+With the advent of Go supporting WebAssembly, I thought I'd take a crack at building a really simple Go based WebAssembly framework that allows you to build simple frontend applications in Go, without having to dive too deep into the bushes.
+
 ## Goals
 
 * Easier frontend application development using Go
+
+## Todo
+
+* Allow registration of interfaces?
+* Implement a global store which can be queried/displayed easily
+
+## Simple Example
+
+Let's take a look at how this framework could be used in a very simple example. We'll be create a really simple app that features on function, `mycoolfunc()`. We'll kick off our Oak framework within our `main()` function and then we'll register our `coolfunc()` function.
 
 ```go
 package main
@@ -27,7 +38,7 @@ func main() {
 }
 ```
 
-This can then be called from HTML like so:
+We can then call our `coolfunc()` function from our `index.html` like so: 
 
 ```html
 <!doctype html>
