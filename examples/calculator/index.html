@@ -1,0 +1,38 @@
+<!doctype html>
+<!--
+Copyright 2018 The Go Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+-->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Go wasm</title>
+	<link rel="stylesheet" href="./static/bootstrap.css">
+	<link rel="stylesheet" href="./static/style.css">
+	<script src="./static/wasm_exec.js"></script>
+	<script src="./static/entrypoint.js"></script>
+</head>
+<body>	
+
+  <div class="container">
+    <h2>Simple Calculator in Go</h2>
+
+    <div id="view"></div>
+
+    <hr/>
+    <input class="form-control" type="text" id="value1"/>
+    <input class="form-control" type="text" id="value2"/>
+
+    <br/>
+    <button class="btn btn-primary btn-block" onClick="add('value1', 'value2', 'result');" id="addButton">Add</button>
+    <button class="btn btn-primary btn-block" onClick="subtract('value1', 'value2', 'result');" id="subtractButton">Subtract</button>
+    <br/>
+    
+    <input class="form-control" type="text" id="result">
+    <button class="btn btn-primary btn-block" onClick="coolfunc();" id="subtractButton">My Cool Func</button>
+  </div>
+</body>
+
+</html>
