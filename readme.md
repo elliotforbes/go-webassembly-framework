@@ -57,3 +57,64 @@ We can then call our `coolfunc()` function from our `index.html` like so:
 
 </html>
 ```
+
+## Routing
+
+```go
+package main
+
+import (
+	"github.com/elliotforbes/oak"
+	"github.com/elliotforbes/oak/router"
+)
+
+func homeComponent() string {
+	return "<h2>Home Component</h2>"
+}
+
+func aboutComponent() string {
+	return "<h2>About Component</h2>"
+}
+
+func main() {
+	// Starts the Oak framework
+	oak.Start()
+
+	// Starts our Router
+	router.NewRouter()
+	router.RegisterRoute("home", homeComponent)
+	router.RegisterRoute("about", aboutComponent)
+
+	// keeps our app running
+	done := make(chan struct{}, 0)
+	<-done
+}
+```
+
+```html
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Blog</title>
+	<link rel="stylesheet" href="./static/bootstrap.css">
+	<link rel="stylesheet" href="./static/style.css">
+	<script src="./static/wasm_exec.js"></script>
+	<script src="./static/entrypoint.js"></script>
+</head>
+<body>	
+
+  <div class="container">
+    <h1>A Simple Blog</h1>
+
+    <div id="view"></div>
+
+    <button onClick="Link('home')">Home</button>
+    <button onClick="Link('about')">About</button>
+
+  </div>
+</body>
+
+</html>
+```

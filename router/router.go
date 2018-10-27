@@ -21,7 +21,6 @@ func NewRouter() {
 
 func RegisterRoute(path string, component func() string) {
 	router.Routes[path] = component
-	println("Successfully Registered function")
 }
 
 func AllRoutes() {
