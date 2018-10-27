@@ -1,16 +1,10 @@
 package main
 
 import (
-	"syscall/js"
-
 	"github.com/elliotforbes/oak"
 	"github.com/elliotforbes/oak/examples/blog/components"
 	"github.com/elliotforbes/oak/router"
 )
-
-func coolFunc(i []js.Value) {
-	println("Does something cool")
-}
 
 func main() {
 	// Starts the Oak framework

@@ -1,9 +1,18 @@
 package components
 
-type AboutComponent struct {
-}
+import "github.com/elliotforbes/oak"
+
+type AboutComponent struct{}
 
 var About AboutComponent
+
+func init() {
+	oak.RegisterFunction("coolFunc", CoolFunc)
+}
+
+func CoolFunc() {
+	println("does stuff")
+}
 
 func (a AboutComponent) Render() string {
 	return `<div>
