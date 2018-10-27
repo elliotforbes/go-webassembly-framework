@@ -1,26 +1,27 @@
 package main
 
 import (
+	"syscall/js"
+
 	"github.com/elliotforbes/oak"
+	"github.com/elliotforbes/oak/examples/blog/components"
 	"github.com/elliotforbes/oak/router"
 )
 
-func homeComponent() string {
-	return "<h2>Home Component</h2>"
-}
-
-func aboutComponent() string {
-	return "<h2>About Component</h2>"
+func coolFunc(i []js.Value) {
+	println("Does something cool")
 }
 
 func main() {
 	// Starts the Oak framework
 	oak.Start()
 
+	oak.RegisterFunction("coolFunc", coolFunc)
+
 	// Starts our Router
 	router.NewRouter()
-	router.RegisterRoute("home", homeComponent)
-	router.RegisterRoute("about", aboutComponent)
+	router.RegisterRoute("home", components.Home)
+	router.RegisterRoute("about", components.About)
 
 	// keeps our app running
 	done := make(chan struct{}, 0)
