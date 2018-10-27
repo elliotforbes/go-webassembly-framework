@@ -5,10 +5,14 @@ import (
 )
 
 type Router struct {
-	Routes map[string]string
+	Routes map[string]func() string
 }
 
 var router Router
+
+func init() {
+	router.Routes = make(map[string]func() string)
+}
 
 func NewRouter() {
 	js.Global().Set("Link", js.NewCallback(Link))
@@ -16,7 +20,8 @@ func NewRouter() {
 }
 
 func RegisterRoute(path string, component func() string) {
-	println(path)
+	router.Routes[path] = component
+	println("Successfully Registered function")
 }
 
 func AllRoutes() {
@@ -26,6 +31,7 @@ func AllRoutes() {
 func Link(i []js.Value) {
 	println("Link Hit")
 
-	// inner := router.Routes[i[0].String()]
-	js.Global().Get("document").Call("getElementById", "view").Set("innerHTML", i[0].String())
+	inner := router.Routes[i[0].String()]
+	html := inner()
+	js.Global().Get("document").Call("getElementById", "view").Set("innerHTML", html)
 }
