@@ -8,7 +8,7 @@ license that can be found in the LICENSE file.
 
 <head>
 	<meta charset="utf-8">
-	<title>Go wasm</title>
+	<title>Blog</title>
 	<link rel="stylesheet" href="./static/bootstrap.css">
 	<link rel="stylesheet" href="./static/style.css">
 	<script src="./static/wasm_exec.js"></script>
@@ -17,18 +17,13 @@ license that can be found in the LICENSE file.
 <body>	
 
   <div class="container">
-    <h2>Simple Calculator in Go</h2>
+    <h2>A Simple Blog</h2>
 
-    <hr/>
-    <input class="form-control" type="text" id="value1"/>
-    <input class="form-control" type="text" id="value2"/>
+    <div id="view"></div>
 
-    <br/>
-    <button class="btn btn-primary btn-block" onClick="add('value1', 'value2', 'result');" id="addButton">Add</button>
-    <button class="btn btn-primary btn-block" onClick="subtract('value1', 'value2', 'result');" id="subtractButton">Subtract</button>
-    <br/>
-    
-    <input class="form-control" type="text" id="result">
+    <button onClick="Link('home')">Home</button>
+    <button onClick="Link('about')">About</button>
+
     <button class="btn btn-primary btn-block" onClick="coolfunc();" id="subtractButton">My Cool Func</button>
   </div>
 </body>
