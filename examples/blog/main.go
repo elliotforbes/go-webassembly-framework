@@ -10,8 +10,6 @@ func main() {
 	// Starts the Oak framework
 	oak.Start()
 
-	oak.RegisterFunction("coolFunc", coolFunc)
-
 	// Starts our Router
 	router.NewRouter()
 	router.RegisterRoute("home", components.Home)
