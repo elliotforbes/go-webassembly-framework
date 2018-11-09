@@ -1,6 +1,10 @@
 package components
 
-import "github.com/elliotforbes/oak"
+import (
+	"syscall/js"
+
+	"github.com/elliotforbes/oak"
+)
 
 type AboutComponent struct{}
 
@@ -10,7 +14,7 @@ func init() {
 	oak.RegisterFunction("coolFunc", CoolFunc)
 }
 
-func CoolFunc() {
+func CoolFunc(i []js.Value) {
 	println("does stuff")
 }
 

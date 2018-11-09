@@ -25,10 +25,6 @@ func RegisterRoute(path string, component component.Component) {
 	router.Routes[path] = component
 }
 
-func AllRoutes() {
-	println(router.Routes)
-}
-
 func Link(i []js.Value) {
 	println("Link Hit")
 

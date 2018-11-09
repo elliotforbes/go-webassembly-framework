@@ -1,6 +1,8 @@
 Oak - The Go WebAssembly Framework
 ===================================
 
+![Oak Framework](logo.jpg)
+
 With the advent of Go supporting WebAssembly, I thought I'd take a crack at building a really simple Go based WebAssembly framework that allows you to build simple frontend applications in Go, without having to dive too deep into the bushes.
 
 ## Goals
@@ -58,6 +60,37 @@ We can then call our `coolfunc()` function from our `index.html` like so:
 </html>
 ```
 
+## Components 
+
+```go
+package components
+
+import (
+	"syscall/js"
+
+	"github.com/elliotforbes/oak"
+)
+
+type AboutComponent struct{}
+
+var About AboutComponent
+
+func init() {
+	oak.RegisterFunction("coolFunc", CoolFunc)
+}
+
+func CoolFunc(i []js.Value) {
+	println("does stuff")
+}
+
+func (a AboutComponent) Render() string {
+	return `<div>
+						<h2>About Component Actually Works</h2>
+						<button onClick="coolFunc();">Cool Func</button>
+					</div>`
+}
+```
+
 ## Routing
 
 ```go
@@ -66,15 +99,9 @@ package main
 import (
 	"github.com/elliotforbes/oak"
 	"github.com/elliotforbes/oak/router"
+
+	"github.com/elliotforbes/oak/examples/blog/components"
 )
-
-func homeComponent() string {
-	return "<h2>Home Component</h2>"
-}
-
-func aboutComponent() string {
-	return "<h2>About Component</h2>"
-}
 
 func main() {
 	// Starts the Oak framework
@@ -82,7 +109,6 @@ func main() {
 
 	// Starts our Router
 	router.NewRouter()
-	router.RegisterRoute("home", homeComponent)
 	router.RegisterRoute("about", aboutComponent)
 
 	// keeps our app running
