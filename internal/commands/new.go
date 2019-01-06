@@ -11,10 +11,11 @@ import (
 )
 
 var files = map[string]string{
-	"static/entrypoint.js": "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/calculator/static/entrypoint.js",
-	"static/wasm_exec.js":  "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/calculator/static/wasm_exec.js",
-	"main.go":              "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/calculator/main.go",
-	"index.html":           "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/calculator/index.html",
+	"static/app.css":       "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/template/static/app.css",
+	"static/entrypoint.js": "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/template/static/entrypoint.js",
+	"static/wasm_exec.js":  "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/template/static/wasm_exec.js",
+	"main.go":              "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/template/main.go",
+	"index.html":           "https://raw.githubusercontent.com/elliotforbes/oak/master/examples/template/index.html",
 }
 
 var NewCmd = &cobra.Command{

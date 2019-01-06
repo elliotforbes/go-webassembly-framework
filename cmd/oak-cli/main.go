@@ -22,5 +22,6 @@ func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	rootCmd.AddCommand(commands.StartCmd)
 	rootCmd.AddCommand(commands.NewCmd)
+	rootCmd.AddCommand(commands.GenerateCmd)
 	rootCmd.Execute()
 }
