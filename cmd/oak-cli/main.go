@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 
+	"github.com/elliotforbes/oak/internal/commands"
 	"github.com/spf13/cobra"
 )
 
@@ -17,6 +19,7 @@ var rootCmd = &cobra.Command{
 }
 
 func main() {
-	fmt.Println("Oak Command Line Interface")
+	runtime.GOMAXPROCS(runtime.NumCPU())
+	rootCmd.AddCommand(commands.StartCmd)
 	rootCmd.Execute()
 }
