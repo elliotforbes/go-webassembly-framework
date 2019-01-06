@@ -3,7 +3,7 @@ package main
 import (
 	"syscall/js"
 
-	"github.com/elliotforbes/oak"
+	oak "github.com/elliotforbes/go-webassembly-framework"
 )
 
 func mycoolfunc(i []js.Value) {
