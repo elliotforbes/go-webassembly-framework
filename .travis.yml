@@ -1,0 +1,13 @@
+# .travis.yml
+language: go
+
+sudo: false
+
+go:
+  - "1.11"
+
+script:
+  - ./.travis.gofmt.sh
+  - make build
+  - make build-cli
+  - echo "placeholder"

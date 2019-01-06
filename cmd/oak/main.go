@@ -3,8 +3,8 @@ package oak
 import (
 	"syscall/js"
 
-	"github.com/elliotforbes/oak/http"
-	"github.com/elliotforbes/oak/utils"
+	"github.com/elliotforbes/oak/pkg/http"
+	"github.com/elliotforbes/oak/pkg/utils"
 )
 
 func registerCallbacks() {
