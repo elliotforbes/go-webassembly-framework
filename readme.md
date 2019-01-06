@@ -3,9 +3,8 @@ Oak - The Go WebAssembly Framework
 
 ![Travis Build Status](https://api.travis-ci.org/elliotforbes/oak.svg?branch=master)
 
-<img align="left" alt="Oak Framework" src="logo.jpg" />
 
-With the advent of Go supporting WebAssembly, I thought I'd take a crack at building a really simple Go based WebAssembly framework that allows you to build simple frontend applications in Go, without having to dive too deep into the bushes.
+<img align="left" alt="Oak Framework" src="logo.jpg" /> With the advent of Go supporting WebAssembly, I thought I'd take a crack at building a really simple Go based WebAssembly framework that allows you to build simple frontend applications in Go, without having to dive too deep into the bushes.
 
 ## Goals
 
