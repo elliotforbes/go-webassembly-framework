@@ -2,6 +2,8 @@ package commands
 
 import (
 	"fmt"
+	"log"
+	"net/http"
 
 	"github.com/spf13/cobra"
 )
@@ -18,4 +20,6 @@ var StartCmd = &cobra.Command{
 
 func runServer(cmd *cobra.Command, args []string) {
 	fmt.Println("Starting Server")
+	log.Printf("listening on %q...", ":8080")
+	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
 }

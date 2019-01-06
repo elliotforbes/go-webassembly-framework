@@ -3,7 +3,7 @@ Oak - The Go WebAssembly Framework
 
 ![Travis Build Status](https://api.travis-ci.org/elliotforbes/oak.svg?branch=master)
 
-![Oak Framework](logo.jpg)
+<img align="left" alt="Oak Framework" src="logo.jpg" />
 
 With the advent of Go supporting WebAssembly, I thought I'd take a crack at building a really simple Go based WebAssembly framework that allows you to build simple frontend applications in Go, without having to dive too deep into the bushes.
 
@@ -11,15 +11,22 @@ With the advent of Go supporting WebAssembly, I thought I'd take a crack at buil
 
 * Easier frontend application development using Go
 
-## Todo
-
-* Allow registration of interfaces?
-* Implement a global store which can be queried/displayed easily
-
 ## Tutorial
 
 A tutorial describing Oak is avaiable here: 
 https://tutorialedge.net/golang/writing-frontend-web-framework-webassembly-go/
+
+## CLI
+
+If you want to easily run the example in this project, I suggest you try out the new `Oak CLI` which attempts to simplify the task of writing WebAssembly applications in Go.
+
+```s
+$ make build-cli
+$ cd examples/blog
+$ ./oak start
+Starting Server
+2019/01/06 12:00:37 listening on ":8080"...
+```
 
 ## Simple Example
 
