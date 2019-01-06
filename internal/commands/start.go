@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/cobra"
 )
 
@@ -19,7 +20,34 @@ var StartCmd = &cobra.Command{
 }
 
 func runServer(cmd *cobra.Command, args []string) {
-	fmt.Println("Starting Server")
+	watcher, err := fsnotify.NewWatcher()
+	if err != nil {
+		fmt.Println("ERROR", err)
+	}
+	defer watcher.Close()
+
+	done := make(chan bool)
+
+	go func() {
+		for {
+			select {
+			case event := <-watcher.Events:
+				fmt.Printf("Event %+v\n", event)
+
+			case err := <-watcher.Errors:
+				fmt.Println("Error: ", err)
+			}
+		}
+	}()
+
+	err = watcher.Add(".")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	log.Printf("listening on %q...", ":8080")
 	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
+
+	<-done
+
 }
