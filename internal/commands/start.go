@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os/exec"
 
+	"github.com/fatih/color"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/cobra"
 )
@@ -20,6 +22,9 @@ var StartCmd = &cobra.Command{
 }
 
 func runServer(cmd *cobra.Command, args []string) {
+	color.Green("Starting Development Server on http://localhost:8080")
+	go http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))
+
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
 		fmt.Println("ERROR", err)
@@ -32,8 +37,17 @@ func runServer(cmd *cobra.Command, args []string) {
 		for {
 			select {
 			case event := <-watcher.Events:
-				fmt.Printf("Event %+v\n", event)
+				color.Cyan("New Change Detected")
 
+				if event.Op&fsnotify.Write == fsnotify.Write {
+					color.Green("modified file: %s\n", event.Name)
+				}
+
+				out, err := exec.Command("env GOOS=js GOARCH=wasm").Output()
+				if err != nil {
+					fmt.Println("err: ", err)
+				}
+				fmt.Println(string(out[:]))
 			case err := <-watcher.Errors:
 				fmt.Println("Error: ", err)
 			}
@@ -45,9 +59,5 @@ func runServer(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 
-	log.Printf("listening on %q...", ":8080")
-	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
-
 	<-done
-
 }

@@ -3,7 +3,7 @@ package router
 import (
 	"syscall/js"
 
-	"github.com/elliotforbes/oak/component"
+	"github.com/elliotforbes/oak/pkg/component"
 )
 
 type Router struct {

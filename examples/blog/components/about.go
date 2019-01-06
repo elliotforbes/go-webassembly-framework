@@ -20,7 +20,7 @@ func CoolFunc(i []js.Value) {
 
 func (a AboutComponent) Render() string {
 	return `<div>
-						<h2>About Component Actually Works</h2>
-						<button onClick="coolFunc();">Cool Func</button>
-					</div>`
+				<h2>About Component Actually Works</h2>
+				<button onClick="coolFunc();">Cool Func</button>
+			</div>`
 }

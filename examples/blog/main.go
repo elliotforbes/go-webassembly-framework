@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/elliotforbes/oak"
 	"github.com/elliotforbes/oak/examples/blog/components"
-	"github.com/elliotforbes/oak/router"
+	"github.com/elliotforbes/oak/pkg/router"
 )
 
 func main() {

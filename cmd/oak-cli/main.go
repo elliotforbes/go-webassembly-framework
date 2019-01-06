@@ -21,5 +21,6 @@ var rootCmd = &cobra.Command{
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	rootCmd.AddCommand(commands.StartCmd)
+	rootCmd.AddCommand(commands.NewCmd)
 	rootCmd.Execute()
 }
