@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"os/exec"
+	"path/filepath"
 
 	"github.com/fatih/color"
 	"github.com/fsnotify/fsnotify"
@@ -38,16 +40,19 @@ func runServer(cmd *cobra.Command, args []string) {
 			select {
 			case event := <-watcher.Events:
 				color.Cyan("New Change Detected")
-
 				if event.Op&fsnotify.Write == fsnotify.Write {
 					color.Green("modified file: %s\n", event.Name)
+
+					if filepath.Ext(event.Name) == ".go" {
+						err := recompile()
+						if err != nil {
+							color.Red("Failed to Recompile")
+							os.Exit(1)
+						}
+					}
+
 				}
 
-				out, err := exec.Command("env GOOS=js GOARCH=wasm").Output()
-				if err != nil {
-					fmt.Println("err: ", err)
-				}
-				fmt.Println(string(out[:]))
 			case err := <-watcher.Errors:
 				fmt.Println("Error: ", err)
 			}
@@ -60,4 +65,15 @@ func runServer(cmd *cobra.Command, args []string) {
 	}
 
 	<-done
+}
+
+func recompile() error {
+	out, err := exec.Command("env", "GOOS=js", "GOARCH=wasm", "go", "build", "-o", "lib.wasm", "main.go").Output()
+	if err != nil {
+		fmt.Println("err: ", err)
+		return err
+	}
+	fmt.Println(string(out[:]))
+	color.Green("Successfully Recompiled WebAssembly Binary...")
+	return nil
 }
