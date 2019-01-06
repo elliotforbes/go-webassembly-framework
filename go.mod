@@ -1,4 +1,4 @@
-module github.com/elliotforbes/oak
+module github.com/elliotforbes/go-webassembly-framework
 
 require (
 	github.com/fatih/color v1.7.0
