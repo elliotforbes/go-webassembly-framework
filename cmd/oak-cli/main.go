@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/elliotforbes/oak/internal/commands"
+	"github.com/elliotforbes/go-webassembly-framework/internal/commands"
 	"github.com/spf13/cobra"
 )
 

@@ -3,7 +3,7 @@ package router
 import (
 	"syscall/js"
 
-	"github.com/elliotforbes/oak/pkg/component"
+	"github.com/elliotforbes/go-webassembly-framework/pkg/component"
 )
 
 type Router struct {

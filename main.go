@@ -3,8 +3,8 @@ package oak
 import (
 	"syscall/js"
 
-	"github.com/elliotforbes/oak/pkg/http"
-	"github.com/elliotforbes/oak/pkg/utils"
+	"github.com/elliotforbes/go-webassembly-framework/pkg/http"
+	"github.com/elliotforbes/go-webassembly-framework/pkg/utils"
 )
 
 func registerCallbacks() {
