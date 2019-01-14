@@ -23,5 +23,6 @@ func main() {
 	rootCmd.AddCommand(commands.StartCmd)
 	rootCmd.AddCommand(commands.NewCmd)
 	rootCmd.AddCommand(commands.GenerateCmd)
+	rootCmd.AddCommand(commands.BuildCmd)
 	rootCmd.Execute()
 }
