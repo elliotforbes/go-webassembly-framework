@@ -14,10 +14,9 @@ var BuildCmd = &cobra.Command{
 }
 
 func buildExecute(cmd *cobra.Command, args []string) {
-	out, err := exec.Command("env", "GOOS=js", "GOARCH=wasm", "go", "build", "-o", "lib.wasm", "main.go").Output()
+	out, err := exec.Command("env", "tinygo", "build", "-o", "lib.wasm", "-target", "wasm", "./main.go").Output()
 	if err != nil {
 		color.Red("err: ", err)
 	}
 	color.Green(string(out[:]))
-
 }

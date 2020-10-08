@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/elliotforbes/oak"
-	"github.com/elliotforbes/oak/examples/blog/components"
-	"github.com/elliotforbes/oak/pkg/router"
+	"github.com/elliotforbes/go-webassembly-framework"
+	"github.com/elliotforbes/go-webassembly-framework/examples/blog/components"
+	"github.com/elliotforbes/go-webassembly-framework/router"
 )
 
 func main() {

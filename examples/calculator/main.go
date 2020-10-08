@@ -6,8 +6,9 @@ import (
 	oak "github.com/elliotforbes/go-webassembly-framework"
 )
 
-func mycoolfunc(i []js.Value) {
+func mycoolfunc(this js.Value, i []js.Value) interface{} {
 	println("My Awesome Function")
+	return nil
 }
 
 func main() {

@@ -3,18 +3,15 @@ package oak
 import (
 	"syscall/js"
 
-	"github.com/elliotforbes/go-webassembly-framework/pkg/http"
-	"github.com/elliotforbes/go-webassembly-framework/pkg/utils"
+	"github.com/elliotforbes/go-webassembly-framework/http"
 )
 
 func registerCallbacks() {
-	// packages
-	utils.RegisterCallbacks()
 	http.RegisterCallbacks()
 }
 
-func RegisterFunction(funcName string, myfunc func(i []js.Value)) {
-	js.Global().Set(funcName, js.NewCallback(myfunc))
+func RegisterFunction(functionName string, function func(this js.Value, i []js.Value) interface{}) {
+	js.Global().Set(functionName, js.FuncOf(function))
 }
 
 func Start() {

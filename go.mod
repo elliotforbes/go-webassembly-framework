@@ -1,5 +1,7 @@
 module github.com/elliotforbes/go-webassembly-framework
 
+go 1.14
+
 require (
 	github.com/fatih/color v1.7.0
 	github.com/fsnotify/fsnotify v1.4.7
