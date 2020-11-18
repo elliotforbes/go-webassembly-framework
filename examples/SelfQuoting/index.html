@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Quotizer</title>
+	<script src="./static/wasm_exec.js"></script>
+	<script src="./static/entrypoint.js"></script>
+</head>
+<body>	
+	<div>
+		<main class="container">
+			<div>Seleccione un sistema operativo</div>
+			<div>
+				<div><div>Windows</div> <div><input onchange="HandleOsElement();" type="radio" name="so" value="windows" checked="true"></div></div>
+				<div><div>Linux</div> <div><input onchange="HandleOsElement();" type="radio" name="so" value="linux"></div></div>
+
+			</div>
+			<div class="contenedor float-left">
+				<div class="centrar-text-div" id="TextDisco"></div>
+				<div class="centrar-text-div">GB</div>
+				<div class="centrar-text-div-range">
+					<input class="range vertical-heighest-first round" type="range" min="100" max="1000" id="DiskSlider" onchange="HandleDiskElement();" oninput="HandleDiskElement();" value="100" step="100">
+				</div>
+				<div class="centrar-text-div" >Disco</div>
+			</div>
+			<div id="QuoteResults"></div>
+		</main>
+	</div>
+</body>
+
+</html>
+
+<style>
+
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	.float-left {
+		float:left;
+	}
+	.contenedor{
+		width: 100px;
+		height: 110px;
+	}
+	.centrar-text-div {
+		text-align: center;
+		vertical-align: middle;
+		line-height: 20px;       /* The same as your div height */
+	}
+	.centrar-text-div-range {
+		text-align: center;
+		vertical-align: middle;
+		line-height: 100px;       /* The same as your div height */
+		margin-left: 0px;
+	}
+
+	/*customised range*/ input[type="range"].range
+	{
+		cursor: pointer;
+		width: 100px !important;
+		-webkit-appearance: none;
+		z-index: 200;
+		width:100px;
+
+		border: 1px solid #e6e6e6;
+		background-color: #e6e6e6;
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e6e6e6), to(#d2d2d2));
+		background-image: -webkit-linear-gradient(right, #e6e6e6, #d2d2d2);
+		background-image: -moz-linear-gradient(right, #e6e6e6, #d2d2d2);
+		background-image: -ms-linear-gradient(right, #e6e6e6, #d2d2d2);
+		background-image: -o-linear-gradient(right, #e6e6e6, #d2d2d2);
+	}
+
+	/*customised range when focusing on input */ input[type="range"].range:focus
+	{
+		border: 0 !imporant;
+		outline: none !important;
+	}
+
+	/*customised range slider icon*/ input[type="range"].range::-webkit-slider-thumb
+	{
+		-webkit-appearance: none;
+		width: 10px;
+		height: 10px;
+		background-color: #555;
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4DDBFF), to(#00CCFF));
+		background-image: -webkit-linear-gradient(right, #4DDBFF, #00CCFF);
+		background-image: -moz-linear-gradient(right, #4DDBFF, #00CCFF);
+		background-image: -ms-linear-gradient(right, #4DDBFF, #00CCFF);
+		background-image: -o-linear-gradient(right, #4DDBFF, #00CCFF);
+	}
+
+	/*setting round corners to the range */ input[type="range"].round {
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border-radius: 20px;
+	}
+
+	/*setting round corners to the range slider icon*/ input[type="range"].round::-webkit-slider-thumb {
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		-o-border-radius: 5px;
+	}
+
+	/* set range from 0 - 1 horizontal as by default */ .horizontal-lowest-first
+	{
+		-webkit-transform:rotate(0deg);
+		-moz-transform:rotate(0deg);
+		-o-transform:rotate(0deg);
+		-ms-transform:rotate(0deg);
+		transform:rotate(0deg);
+	}
+
+	/* set range from 1 - 0 horizontal (highest first) */ .horizontal-highest-first
+	{
+		-webkit-transform:rotate(180deg);
+		-moz-transform:rotate(180deg);
+		-o-transform:rotate(180deg);
+		-ms-transform:rotate(180deg);
+		transform:rotate(180deg);
+	}
+
+	/* set range from 0 - 1 vertically (lowest on top) */ .vertical-lowest-first
+	{
+		-webkit-transform:rotate(90deg);
+		-moz-transform:rotate(90deg);
+		-o-transform:rotate(90deg);
+		-ms-transform:rotate(90deg);
+		transform:rotate(90deg);
+	}
+
+	/* set range from 1 - 0 vertically (highest on top) */ .vertical-heighest-first
+	{
+		-webkit-transform:rotate(270deg);
+		-moz-transform:rotate(270deg);
+		-o-transform:rotate(270deg);
+		-ms-transform:rotate(270deg);
+		transform:rotate(270deg);
+	}
+</style>
